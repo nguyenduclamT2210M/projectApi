@@ -12,29 +12,29 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/dishes")
+@RequestMapping("/api/v1/dishes")
 public class DishController {
     @Autowired
     private DishService dishService;
 
     @GetMapping
-    public List<Dish> getAllCustomer() {
+    public List<Dish> getAllDish() {
         return dishService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Dish> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<Dish> getDishById(@PathVariable Long id) {
         Optional<Dish> publisher = dishService.findById(id);
         return publisher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Dish createCustomer(@RequestBody Dish publisher) {
+    public Dish createDish(@RequestBody Dish publisher) {
         return dishService.save(publisher);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Dish> updateCustomer(@PathVariable Long id, @RequestBody Dish publisherDetails) {
+    public ResponseEntity<Dish> updateDish(@PathVariable Long id, @RequestBody Dish publisherDetails) {
         Optional<Dish> publisher = dishService.findById(id);
         if (publisher.isPresent()) {
             Dish updatedPublisher = publisher.get();
@@ -52,7 +52,7 @@ public class DishController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteDish(@PathVariable Long id) {
         Optional<Dish> publisher = dishService.findById(id);
         if (publisher.isPresent()) {
             dishService.deleteById(id);

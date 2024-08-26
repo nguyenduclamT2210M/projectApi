@@ -13,8 +13,8 @@ public class Category {
     @Column(nullable = false )
     private String name;
 
-   // @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "category")
-   // private Set<Dish> dishes;
+//   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "category")
+//   private Set<Dish> dishes;
 
     public Long getId() {
         return id;
@@ -32,12 +32,12 @@ public class Category {
         this.name = name;
     }
 
-   // public Set<Dish> getDishes() {
-    //    return dishes;
-   // }
-
-  //  public void setDishes(Set<Dish> dishes) {
-   //     this.dishes = dishes;
-  //  }
+//   public Set<Dish> getDishes() {
+//        return dishes;
+//    }
+//
+//    public void setDishes(Set<Dish> dishes) {
+//        this.dishes = dishes;
+//    }
 
 }

@@ -12,7 +12,9 @@ public class Booking {
     @ManyToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "customer_id")
     private Customer customer;
+    @Column(nullable = false )
     private int  people;
+    @Column(nullable = false )
     private Date date;
 
     public Long getId() {

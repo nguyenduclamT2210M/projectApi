@@ -11,8 +11,14 @@ public class OrderItemEmployee {
     private OrderItem orderId;
     @ManyToOne(fetch = FetchType.EAGER)
     private Employee employeeId;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false )
-    private String Status;
+    private Status status;
+
+    public enum Status {
+        Done,Wait
+    }
+
 
     public int getId() {
         return id;
@@ -38,11 +44,5 @@ public class OrderItemEmployee {
         this.employeeId = employeeId;
     }
 
-    public String getStatus() {
-        return Status;
-    }
 
-    public void setStatus(String status) {
-        Status = status;
-    }
 }

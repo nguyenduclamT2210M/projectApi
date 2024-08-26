@@ -3,6 +3,7 @@ package org.example.projectapi.Controller;
 import org.example.projectapi.Service.CustomerService;
 import org.example.projectapi.Service.EmployeeService;
 import org.example.projectapi.model.Customer;
+import org.example.projectapi.model.Dish;
 import org.example.projectapi.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee createCustomer(@RequestBody Employee publisher) {
+    public Employee createEmployee(@RequestBody Employee publisher) {
         return employeeService.save(publisher);
     }
 
