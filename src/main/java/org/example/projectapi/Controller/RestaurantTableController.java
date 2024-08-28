@@ -39,7 +39,7 @@ public class RestaurantTableController {
         if (publisher.isPresent()) {
             RestaurantTable updatedPublisher = publisher.get();
             updatedPublisher.setChairs(publisherDetails.getChairs());
-            updatedPublisher.setOrder(publisherDetails.getOrder());
+//            updatedPublisher.setOrder(publisherDetails.getOrder());
             updatedPublisher.setQrCode(publisherDetails.getQrCode());
             updatedPublisher.setStatus(publisherDetails.getStatus());
             return ResponseEntity.ok(restaurantTableService.save(updatedPublisher));

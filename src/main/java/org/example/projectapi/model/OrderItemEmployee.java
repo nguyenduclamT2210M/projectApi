@@ -1,6 +1,7 @@
 package org.example.projectapi.model;
 
 import jakarta.persistence.*;
+import org.example.projectapi.Enum.StatusOrderEmployee;
 
 @Entity
 public class OrderItemEmployee {
@@ -8,16 +9,17 @@ public class OrderItemEmployee {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id;
     @ManyToOne(fetch = FetchType.EAGER)
-    private OrderItem orderId;
+    @JoinColumn(name = "order_item_id", nullable = false)
+    private OrderItem orderItem;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    private Employee employeeId;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false )
-    private Status status;
+    private StatusOrderEmployee status;
 
-    public enum Status {
-        Done,Wait
-    }
+
 
 
     public int getId() {
@@ -28,21 +30,27 @@ public class OrderItemEmployee {
         this.id = id;
     }
 
-    public OrderItem getOrderId() {
-        return orderId;
+    public OrderItem getOrderItem() {
+        return orderItem;
     }
 
-    public void setOrderId(OrderItem orderId) {
-        this.orderId = orderId;
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItem = orderItem;
     }
 
-    public Employee getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(Employee employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
+    public StatusOrderEmployee getStatus() {
+        return status;
+    }
 
+    public void setStatus(StatusOrderEmployee status) {
+        this.status = status;
+    }
 }

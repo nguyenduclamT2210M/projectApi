@@ -1,6 +1,7 @@
 package org.example.projectapi.model;
 
 import jakarta.persistence.*;
+import org.example.projectapi.Enum.StatusDish;
 
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class Dish {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "dish")
-    private List<OrderItem> orderItems;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "dish")
+//    private List<OrderItem> orderItems;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false )
     private StatusDish status;
@@ -30,9 +31,7 @@ public class Dish {
     @Column(nullable = false )
     private String discount;
 
-    public enum StatusDish {
-        Available, OutOfStock
-    }
+
 
 
 
@@ -76,13 +75,13 @@ public class Dish {
         this.category = category;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
+//    public List<OrderItem> getOrderItems() {
+//        return orderItems;
+//    }
+//
+//    public void setOrderItems(List<OrderItem> orderItems) {
+//        this.orderItems = orderItems;
+//    }
 
     public StatusDish getStatus() {
         return status;

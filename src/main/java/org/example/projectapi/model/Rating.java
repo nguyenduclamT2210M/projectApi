@@ -1,6 +1,8 @@
 package org.example.projectapi.model;
 
 import jakarta.persistence.*;
+import org.example.projectapi.Enum.Start;
+import org.hibernate.sql.ast.tree.expression.Star;
 
 import java.util.List;
 
@@ -12,10 +14,8 @@ public class Rating {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false )
-    private Star star;
-    public enum Star{
-        One, Two, Three, Four, Five
-    }
+    private Start start;
+
     @Column(nullable = false )
     public String description;
     @Column(nullable = false )
@@ -30,12 +30,12 @@ public class Rating {
         this.id = id;
     }
 
-    public Star getStar() {
-        return star;
+    public Start getStart() {
+        return start;
     }
 
-    public void setStar(Star star) {
-        this.star = star;
+    public void setStart(Start start) {
+        this.start = start;
     }
 
     public String getDescription() {

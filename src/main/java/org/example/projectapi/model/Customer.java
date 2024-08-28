@@ -19,16 +19,16 @@ public class Customer {
     @Column(nullable = false )
     private Date created_at;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "customer")
-    private Set<AppOrder> orders;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "customer")
+//    private Set<AppOrder> orders;
+//
+//    public Set<AppOrder> getOrders() {
+//        return orders;
+//    }
 
-    public Set<AppOrder> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<AppOrder> orders) {
-        this.orders = orders;
-    }
+//    public void setOrders(Set<AppOrder> orders) {
+//        this.orders = orders;
+//    }
 
     public Long getId() {
         return id;

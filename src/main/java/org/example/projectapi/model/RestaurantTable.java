@@ -1,6 +1,7 @@
 package org.example.projectapi.model;
 
 import jakarta.persistence.*;
+import org.example.projectapi.Enum.StatusTable;
 
 import java.util.List;
 
@@ -17,13 +18,11 @@ public class RestaurantTable {
     @Column(nullable = false )
     private StatusTable status;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "restaurantTable")
-    private List<AppOrder> order;
+//    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "restaurantTable")
+//    private List<AppOrder> order;
 
 
-    public enum StatusTable {
-        Available, Occupied, Reserved, OutOfService
-    }
+
 
     public Long getId() {
         return id;
@@ -57,11 +56,11 @@ public class RestaurantTable {
         this.status = status;
     }
 
-    public List<AppOrder> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<AppOrder> order) {
-        this.order = order;
-    }
+//    public List<AppOrder> getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(List<AppOrder> order) {
+//        this.order = order;
+//    }
 }

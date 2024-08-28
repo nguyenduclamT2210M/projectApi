@@ -4,6 +4,7 @@ import org.example.projectapi.Repository.EmployeeRepository;
 import org.example.projectapi.Repository.OrderRepository;
 import org.example.projectapi.model.AppOrder;
 import org.example.projectapi.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class OrderService {
+    @Autowired
     private OrderRepository orderRepository;
 
     public List<AppOrder> findAll() {

@@ -1,6 +1,9 @@
 package org.example.projectapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import org.example.projectapi.Enum.PaymentMethod;
+import org.example.projectapi.Enum.StatusOrder;
 
 import java.util.Date;
 import java.util.List;
@@ -15,7 +18,7 @@ public class AppOrder {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "restaurantTable_id")
     private RestaurantTable restaurantTable;
 
@@ -27,27 +30,20 @@ public class AppOrder {
     @JoinColumn(name = "coupon_id")
     private Coupon coupon;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "order")
-    private List<OrderItem> orderItems;
-
-
-
+//    @OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL,mappedBy = "order")
+//    private List<OrderItem> orderItems;
     @Column(nullable = false )
     private Date create_at;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false )
     private PaymentMethod payment;
-    public enum PaymentMethod {
-        Cash, CreditCard, MobilePayment, BankTransfer
-    }
+
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false )
     private StatusOrder status;
-    public enum StatusOrder {
-        PendingPayment, Paid, Failed
-    }
+
     @Column(nullable = false )
     private double originalPrice;
     @Column(nullable = false )
@@ -95,13 +91,13 @@ public class AppOrder {
         this.coupon = coupon;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
+//    public List<OrderItem> getOrderItems() {
+//        return orderItems;
+//    }
+//
+//    public void setOrderItems(List<OrderItem> orderItems) {
+//        this.orderItems = orderItems;
+//    }
 
     public Date getCreate_at() {
         return create_at;

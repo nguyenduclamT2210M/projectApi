@@ -40,9 +40,9 @@ public class OrderController {
             AppOrder updatedPublisher = publisher.get();
             updatedPublisher.setCustomer(publisherDetails.getCustomer());
             updatedPublisher.setCoupon(publisherDetails.getCoupon());
-            updatedPublisher.setOrderItems(publisherDetails.getOrderItems());
+//            updatedPublisher.setOrderItems(publisherDetails.getOrderItems());
             updatedPublisher.setStatus(publisherDetails.getStatus());
-            updatedPublisher.setBookingTime(publisherDetails.getBookingTime());
+           updatedPublisher.setBookingTime(publisherDetails.getBookingTime());
             updatedPublisher.setCreate_at(publisherDetails.getCreate_at());
             updatedPublisher.setOriginalPrice(publisherDetails.getOriginalPrice());
             updatedPublisher.setTotalPrice(publisherDetails.getTotalPrice());

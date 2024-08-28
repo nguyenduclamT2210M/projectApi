@@ -43,7 +43,7 @@ public class DishController {
             updatedPublisher.setPrice(publisherDetails.getPrice());
             updatedPublisher.setCategory(publisherDetails.getCategory());
             updatedPublisher.setStatus(publisherDetails.getStatus());
-            updatedPublisher.setOrderItems(publisherDetails.getOrderItems());
+//            updatedPublisher.setOrderItems(publisherDetails.getOrderItems());
             updatedPublisher.setDiscount(publisherDetails.getDiscount());
             return ResponseEntity.ok(dishService.save(updatedPublisher));
         } else {

@@ -38,7 +38,7 @@ public class RatingController {
         Optional<Rating> publisher = ratingService.findById(id);
         if (publisher.isPresent()) {
             Rating updatedPublisher = publisher.get();
-            updatedPublisher.setStar(publisherDetails.getStar());
+            updatedPublisher.setStart(publisherDetails.getStart());
             updatedPublisher.setDescription(publisherDetails.getDescription());
             return ResponseEntity.ok(ratingService.save(updatedPublisher));
         } else {

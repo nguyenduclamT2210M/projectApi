@@ -15,8 +15,8 @@ public class Coupon {
     private double discount;
     //    @ManyToOne(fetch = FetchType.EAGER,optional = false)
 //    @JoinColumn(name = "order_id")
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "coupon")
-    private List<AppOrder> orders;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "coupon")
+//    private List<AppOrder> orders;
 
     public Long getId() {
         return id;
@@ -42,11 +42,11 @@ public class Coupon {
         this.discount = discount;
     }
 
-    public List<AppOrder> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<AppOrder> orders) {
-        this.orders = orders;
-    }
+//    public List<AppOrder> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<AppOrder> orders) {
+//        this.orders = orders;
+//    }
 }

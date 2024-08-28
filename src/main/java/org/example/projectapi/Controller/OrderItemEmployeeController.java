@@ -38,8 +38,8 @@ public class OrderItemEmployeeController {
         Optional<OrderItemEmployee> publisher = orderItemEmployeeService.findById(id);
         if (publisher.isPresent()) {
             OrderItemEmployee updatedPublisher = publisher.get();
-            updatedPublisher.setEmployeeId(publisherDetails.getEmployeeId());
-            updatedPublisher.setOrderId(publisherDetails.getOrderId());
+            updatedPublisher.setEmployee(publisherDetails.getEmployee());
+            updatedPublisher.setOrderItem(publisherDetails.getOrderItem());
             return ResponseEntity.ok(orderItemEmployeeService.save(updatedPublisher));
         } else {
             return ResponseEntity.notFound().build();

@@ -18,23 +18,23 @@ public class BookingController {
     private BookingService bookingService;
 
     @GetMapping
-    public List<Booking> getAllCategory() {
+    public List<Booking> getAllBooking() {
         return bookingService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Booking> getCategoryById(@PathVariable Long id) {
+    public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
         Optional<Booking> publisher = bookingService.findById(id);
         return publisher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Booking createCategory(@RequestBody Booking publisher) {
+    public Booking createBooking(@RequestBody Booking publisher) {
         return bookingService.save(publisher);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Booking> updateCategory(@PathVariable Long id, @RequestBody Booking publisherDetails) {
+    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody Booking publisherDetails) {
         Optional<Booking> publisher = bookingService.findById(id);
         if (publisher.isPresent()) {
             Booking updatedCategory = publisher.get();
@@ -47,7 +47,7 @@ public class BookingController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
         Optional<Booking> publisher = bookingService.findById(id);
         if (publisher.isPresent()) {
             bookingService.deleteById(id);

@@ -30,8 +30,8 @@ public class Employee {
     )
     private Set<Role> roles;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "employee")
-    private Set<OrderEmployee> orderEmployee;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "employee")
+//    private Set<OrderEmployee> orderEmployee;
 
     public Long getId() {
         return id;
@@ -91,11 +91,11 @@ public class Employee {
         this.roles = roles;
     }
 
-    public Set<OrderEmployee> getOrderEmployee() {
-        return orderEmployee;
-    }
-
-    public void setOrderEmployee(Set<OrderEmployee> orderEmployee) {
-        this.orderEmployee = orderEmployee;
-    }
+//    public Set<OrderEmployee> getOrderEmployee() {
+//        return orderEmployee;
+//    }
+//
+//    public void setOrderEmployee(Set<OrderEmployee> orderEmployee) {
+//        this.orderEmployee = orderEmployee;
+//    }
 }
