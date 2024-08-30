@@ -18,23 +18,34 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping
-    public List<AppOrder> getAllCustomer() {
+    public List<AppOrder> getAllOrder() {
         return orderService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AppOrder> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<AppOrder> getOrderById(@PathVariable Long id) {
         Optional<AppOrder> publisher = orderService.findById(id);
         return publisher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public AppOrder createEmployee(@RequestBody AppOrder publisher) {
-        return orderService.save(publisher);
+    public AppOrder createOrder(@RequestBody AppOrder order) {
+        AppOrder newOrder = new AppOrder();
+        newOrder.setBillNumber(orderService.createNextBillNumber());
+        newOrder.setPayment(order.getPayment());
+        newOrder.setStatus(order.getStatus());
+        newOrder.setCreate_at(order.getCreate_at());
+        newOrder.setRestaurantTable(order.getRestaurantTable());
+        newOrder.setOriginalPrice(order.getOriginalPrice());
+        newOrder.setTotalPrice(order.getTotalPrice());
+        newOrder.setCoupon(order.getCoupon());
+        newOrder.setOriginalPrice(order.getOriginalPrice());
+        newOrder.setBookingTime(order.getBookingTime());
+        return orderService.save(newOrder);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AppOrder> updateCustomer(@PathVariable Long id, @RequestBody AppOrder publisherDetails) {
+    public ResponseEntity<AppOrder> updateOrder(@PathVariable Long id, @RequestBody AppOrder publisherDetails) {
         Optional<AppOrder> publisher = orderService.findById(id);
         if (publisher.isPresent()) {
             AppOrder updatedPublisher = publisher.get();
@@ -56,7 +67,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long id) {
         Optional<AppOrder> publisher = orderService.findById(id);
         if (publisher.isPresent()) {
             orderService.deleteById(id);

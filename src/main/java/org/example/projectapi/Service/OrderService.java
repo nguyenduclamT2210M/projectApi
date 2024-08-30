@@ -1,5 +1,6 @@
 package org.example.projectapi.Service;
 
+import jakarta.transaction.Transactional;
 import org.example.projectapi.Repository.EmployeeRepository;
 import org.example.projectapi.Repository.OrderRepository;
 import org.example.projectapi.model.AppOrder;
@@ -30,5 +31,20 @@ public class OrderService {
     public void deleteById(Long id) {
         orderRepository.deleteById(id);
     }
+    @Transactional
+    public String createNextBillNumber() {
+        List<String> lastBillNumList = orderRepository.findLastBillNumber();
+        String lastBillNum = lastBillNumList.isEmpty() ? null : lastBillNumList.get(0);
 
+        String nextBillNum;
+        if (lastBillNum == null || lastBillNum.isEmpty()) {
+            nextBillNum = "B000000001";
+        } else {
+            String numberPart = lastBillNum.substring(1);
+            int lastNumber = Integer.parseInt(numberPart);
+            nextBillNum = "B" + String.format("%09d", ++lastNumber);
+        }
+
+        return nextBillNum;
+    }
 }

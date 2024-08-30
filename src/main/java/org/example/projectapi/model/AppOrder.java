@@ -14,6 +14,10 @@ public class AppOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false )
+    private String billNumber;
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -98,6 +102,15 @@ public class AppOrder {
 //    public void setOrderItems(List<OrderItem> orderItems) {
 //        this.orderItems = orderItems;
 //    }
+
+
+    public String getBillNumber() {
+        return billNumber;
+    }
+
+    public void setBillNumber(String billNumber) {
+        this.billNumber = billNumber;
+    }
 
     public Date getCreate_at() {
         return create_at;
